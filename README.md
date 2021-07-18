@@ -1,2 +1,2 @@
-# jops
+# JOps
 Jira Operations
