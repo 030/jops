@@ -16,18 +16,22 @@ space : %20
 package main
 
 import (
-	"github.com/030/jops/internal/jira"
-	log "github.com/sirupsen/logrus"
+  "github.com/030/jops/internal/jira"
+  log "github.com/sirupsen/logrus"
 )
 
 func main() {
-	creds := []string{"user", "pass"}
-	j := jira.Server{Credentials: creds, FQDN: "fqdn", Project: "project-name"}
-	b, err := j.JQL("jql")
-	if err != nil {
-		log.Fatal(err)
-	}
+  creds := []string{"user", "pass"}
+  j := jira.Server{Credentials: creds, FQDN: "fqdn", Project: "project-name"}
+  b, err := j.JQL("jql")
+  if err != nil {
+    log.Fatal(err)
+  }
 
-	jira.ParseJSON(b)
+  jira.ParseJSON(b)
 }
 ```
+
+## Sources
+
+* https://developer.atlassian.com/cloud/jira/platform/rest/v2
