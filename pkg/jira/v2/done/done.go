@@ -17,7 +17,7 @@ func (j *Jira) Done() error {
 		Update:     update,
 	}
 
-	uri := "/" + j.Project + "-" + j.TicketNumber + "/transitions"
+	uri := "/" + j.TicketNumber + "/transitions"
 	htj := httprequest.Jira{URI: uri, APIVersion: "2", Data: data, Method: "POST", FQDN: j.FQDN, User: j.User, Pass: j.Pass}
 	if err := htj.ConstructAndInitiate(); err != nil {
 		return err

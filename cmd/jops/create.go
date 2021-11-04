@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/030/jops/internal/jira/v2/issue/create"
+	"github.com/030/jops/pkg/jira/v2/create"
 	"github.com/spf13/cobra"
 )
 
@@ -15,25 +15,31 @@ var createCmd = &cobra.Command{
 	Long:  `Create a Jira issue`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("create called")
-		j := create.Jira{User: user, Pass: pass, FQDN: fqdn, Project: project, Summary: summary, Description: description}
+
+		j := create.Jira{User: user, Pass: pass, FQDN: fqdn, Priority: priority, Project: project, Summary: summary, Description: description}
 		if err := j.Create(); err != nil {
 			log.Fatal(err)
 		}
 	},
 }
 
-var description, summary string
+var description, priority, summary string
 
 func init() {
 	rootCmd.AddCommand(createCmd)
 
-	createCmd.PersistentFlags().StringVarP(&summary, "summary", "s", "", "The summary of the Jira issue")
-	if err := createCmd.MarkPersistentFlagRequired("summary"); err != nil {
+	createCmd.PersistentFlags().StringVarP(&description, "description", "d", "", "The description of the Jira issue")
+	if err := createCmd.MarkPersistentFlagRequired("description"); err != nil {
 		log.Fatal(err)
 	}
 
-	createCmd.PersistentFlags().StringVarP(&description, "description", "d", "", "The description of the Jira issue")
-	if err := createCmd.MarkPersistentFlagRequired("description"); err != nil {
+	createCmd.PersistentFlags().StringVarP(&priority, "priority", "p", "", "The priority of the Jira issue")
+	if err := createCmd.MarkPersistentFlagRequired("priority"); err != nil {
+		log.Fatal(err)
+	}
+
+	createCmd.PersistentFlags().StringVarP(&summary, "summary", "s", "", "The summary of the Jira issue")
+	if err := createCmd.MarkPersistentFlagRequired("summary"); err != nil {
 		log.Fatal(err)
 	}
 }

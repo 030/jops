@@ -8,6 +8,7 @@ func (j *Jira) Create() error {
 		Summary:     j.Summary,
 		Issuetype:   Issuetype{"Story"},
 		Project:     Project{j.Project},
+		Priority:    Priority{j.Priority},
 	}
 	data := Payload{
 		Fields: fields,

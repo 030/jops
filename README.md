@@ -32,6 +32,20 @@ func main() {
 }
 ```
 
+## Close
+
+```bash
+./jops done -t some-ticket -c test-ticket
+```
+
+## Create
+
+### Prio 4
+
+```bash
+./jops create -d hello -s world -p "Prio 4"
+```
+
 ## Comment
 
 ### Get all Ticket comments

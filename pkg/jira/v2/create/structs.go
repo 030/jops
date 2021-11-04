@@ -1,7 +1,7 @@
 package create
 
 type Jira struct {
-	User, Pass, FQDN, Project, Summary, Description string
+	User, Pass, FQDN, Priority, Project, Summary, Description string
 }
 
 type Payload struct {
@@ -13,10 +13,14 @@ type Issuetype struct {
 type Project struct {
 	ID string `json:"key"`
 }
+type Priority struct {
+	ID string `json:"name"`
+}
 
 type Fields struct {
 	Description string    `json:"description"`
 	Issuetype   Issuetype `json:"issuetype"`
+	Priority    Priority  `json:"priority"`
 	Project     Project   `json:"project"`
 	Summary     string    `json:"summary"`
 }

@@ -15,7 +15,7 @@ var doneCmd = &cobra.Command{
 	Long:  `Close a ticket`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("done called")
-		j := done.Jira{User: user, Pass: pass, FQDN: fqdn, Project: project, TicketNumber: ticketNumber, Comment: doneComment}
+		j := done.Jira{User: user, Pass: pass, FQDN: fqdn, TicketNumber: ticketNumber, Comment: doneComment}
 		if err := j.Done(); err != nil {
 			log.Fatal(err)
 		}

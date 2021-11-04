@@ -1,4 +1,4 @@
-package comment
+package priority
 
 import (
 	"io/ioutil"
@@ -7,8 +7,12 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+type Jira struct {
+	User, Pass, FQDN string
+}
+
 func (j *Jira) GetAll() error {
-	url := j.FQDN + "/rest/api/2/issue/" + j.TicketNumber + "/comment"
+	url := j.FQDN + "/rest/api/2/priority"
 	log.Info(url)
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {

@@ -1,7 +1,7 @@
 package done
 
 type Jira struct {
-	User, Pass, FQDN, Project, TicketNumber, Comment string
+	User, Pass, FQDN, TicketNumber, Comment string
 }
 
 type Payload struct {
