@@ -46,6 +46,12 @@ func main() {
 ./jops create -d hello -s world -p "Prio 4"
 ```
 
+### Labels
+
+```bash
+./jops create -d hello -s world -p "Prio 4" -l dev,devops,dev-something
+```
+
 ## Comment
 
 ### Get all Ticket comments

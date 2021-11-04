@@ -7,6 +7,7 @@ func (j *Jira) Create() error {
 		Description: j.Description,
 		Summary:     j.Summary,
 		Issuetype:   Issuetype{"Story"},
+		Labels:      j.Labels,
 		Project:     Project{j.Project},
 		Priority:    Priority{j.Priority},
 	}

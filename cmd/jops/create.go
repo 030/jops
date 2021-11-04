@@ -16,7 +16,7 @@ var createCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("create called")
 
-		j := create.Jira{User: user, Pass: pass, FQDN: fqdn, Priority: priority, Project: project, Summary: summary, Description: description}
+		j := create.Jira{User: user, Pass: pass, FQDN: fqdn, Priority: priority, Project: project, Summary: summary, Description: description, Labels: labels}
 		if err := j.Create(); err != nil {
 			log.Fatal(err)
 		}
@@ -24,6 +24,7 @@ var createCmd = &cobra.Command{
 }
 
 var description, priority, summary string
+var labels []string
 
 func init() {
 	rootCmd.AddCommand(createCmd)
@@ -32,6 +33,8 @@ func init() {
 	if err := createCmd.MarkPersistentFlagRequired("description"); err != nil {
 		log.Fatal(err)
 	}
+
+	createCmd.PersistentFlags().StringSliceVarP(&labels, "labels", "l", []string{""}, "The labels of the Jira issue")
 
 	createCmd.PersistentFlags().StringVarP(&priority, "priority", "p", "", "The priority of the Jira issue")
 	if err := createCmd.MarkPersistentFlagRequired("priority"); err != nil {
