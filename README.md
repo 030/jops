@@ -32,6 +32,20 @@ func main() {
 }
 ```
 
+## Comment
+
+### Get all Ticket comments
+
+```bash
+./jops comment --ticketNumber=some-ticket --all
+```
+
+### Add a comment to an existing ticket
+
+```bash
+./jops comment --ticketNumber=some-ticket --add --message="hello world"
+```
+
 ## Sources
 
-* https://developer.atlassian.com/cloud/jira/platform/rest/v2
+* <https://developer.atlassian.com/cloud/jira/platform/rest/v2/>
