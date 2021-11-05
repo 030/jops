@@ -17,7 +17,8 @@ var createCmd = &cobra.Command{
 		fmt.Println("create called")
 
 		j := create.Jira{User: user, Pass: pass, FQDN: fqdn, Priority: priority, Project: project, Summary: summary, Description: description, Labels: labels}
-		if err := j.Create(); err != nil {
+		_, err := j.Create()
+		if err != nil {
 			log.Fatal(err)
 		}
 	},

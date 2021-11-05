@@ -7,6 +7,7 @@ import (
 	"net/http"
 
 	log "github.com/sirupsen/logrus"
+	"github.com/tidwall/gjson"
 )
 
 type Jira struct {
@@ -31,34 +32,42 @@ func (j *Jira) Construct() (*http.Request, error) {
 	return req, nil
 }
 
-func (j *Jira) Initiate(req *http.Request) error {
+func (j *Jira) Initiate(req *http.Request) (string, error) {
 	req.SetBasicAuth(j.User, j.Pass)
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("Content-Type", "application/json")
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
-		return err
+		return "", err
 	}
 	defer resp.Body.Close()
-	log.Info(resp.StatusCode)
-	bodyBytes, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return err
+
+	var ticketNumber = ""
+	if resp.StatusCode == http.StatusCreated {
+		bodyBytes, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			return "", err
+		}
+		bodyString := string(bodyBytes)
+		log.Info(bodyString)
+
+		value := gjson.Get(bodyString, "key")
+		ticketNumber = value.String()
 	}
-	bodyString := string(bodyBytes)
-	log.Info(bodyString)
-	return nil
+
+	return ticketNumber, nil
 }
 
-func (j *Jira) ConstructAndInitiate() error {
+func (j *Jira) ConstructAndInitiate() (string, error) {
 	h, err := j.Construct()
 	if err != nil {
-		return err
+		return "", err
 	}
 
-	if err := j.Initiate(h); err != nil {
-		return err
+	ticketNumber, err := j.Initiate(h)
+	if err != nil {
+		return "", err
 	}
-	return nil
+	return ticketNumber, nil
 }

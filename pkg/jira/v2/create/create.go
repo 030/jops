@@ -1,8 +1,13 @@
 package create
 
-import "github.com/030/jops/internal/pkg/httprequest"
+import (
+	"fmt"
 
-func (j *Jira) Create() error {
+	"github.com/030/jops/internal/pkg/httprequest"
+	log "github.com/sirupsen/logrus"
+)
+
+func (j *Jira) Create() (string, error) {
 	fields := Fields{
 		Description: j.Description,
 		Summary:     j.Summary,
@@ -16,9 +21,14 @@ func (j *Jira) Create() error {
 	}
 
 	htj := httprequest.Jira{APIVersion: "2", Data: data, Method: "POST", FQDN: j.FQDN, User: j.User, Pass: j.Pass}
-	if err := htj.ConstructAndInitiate(); err != nil {
-		return err
+	ticketNumber, err := htj.ConstructAndInitiate()
+	if err != nil {
+		return "", err
 	}
+	if ticketNumber == "" {
+		return "", fmt.Errorf("ticketNumber should not be empty")
+	}
+	log.Infof("Ticket: '%s' has been created", ticketNumber)
 
-	return nil
+	return ticketNumber, nil
 }

@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.0] - 2021-11-05
+
+### Added
+
+- Return ticketNumber once a ticket has been created.
+
 ## [0.6.1] - 2021-11-04
 
 ### Fixed
@@ -58,7 +64,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Issue JQL queries.
 - Describe in README how to use the jops library.
 
-[Unreleased]: https://github.com/030/jops/compare/0.6.1...HEAD
+[Unreleased]: https://github.com/030/jops/compare/0.7.0...HEAD
+[0.7.0]: https://github.com/030/jops/compare/0.6.1...0.7.0
 [0.6.1]: https://github.com/030/jops/compare/0.6.0...0.6.1
 [0.6.0]: https://github.com/030/jops/compare/0.5.0...0.6.0
 [0.5.0]: https://github.com/030/jops/compare/0.4.0...0.5.0
