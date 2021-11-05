@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
+	"strings"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -14,8 +15,9 @@ type Payload struct {
 }
 
 func (j *Jira) Add(msg string) error {
+	multiLineIssueFixInDescription := strings.ReplaceAll(msg, "\\n", "\n")
 	data := Payload{
-		Body: msg,
+		Body: multiLineIssueFixInDescription,
 	}
 	payloadBytes, err := json.Marshal(data)
 	if err != nil {

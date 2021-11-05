@@ -2,14 +2,16 @@ package create
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/030/jops/internal/pkg/httprequest"
 	log "github.com/sirupsen/logrus"
 )
 
 func (j *Jira) Create() (string, error) {
+	multiLineIssueFixInDescription := strings.ReplaceAll(j.Description, "\\n", "\n")
 	fields := Fields{
-		Description: j.Description,
+		Description: multiLineIssueFixInDescription,
 		Summary:     j.Summary,
 		Issuetype:   Issuetype{"Story"},
 		Labels:      j.Labels,
