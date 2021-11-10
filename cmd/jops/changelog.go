@@ -16,9 +16,11 @@ var changelogCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("changelog called")
 		j := changelog.Jira{User: user, Pass: pass, FQDN: fqdn, TicketNumber: ticketNumber}
-		if err := j.Get(); err != nil {
+		s, err := j.Get()
+		if err != nil {
 			log.Fatal(err)
 		}
+		log.Info(s)
 	},
 }
 
