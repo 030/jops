@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"log"
 
 	"github.com/030/jops/pkg/jira/v2/done"
+	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )
 
