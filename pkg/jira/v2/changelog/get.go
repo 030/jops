@@ -2,7 +2,6 @@ package changelog
 
 import (
 	"github.com/030/jops/internal/pkg/httprequest"
-	log "github.com/sirupsen/logrus"
 )
 
 func (j *Jira) Get() (string, error) {
