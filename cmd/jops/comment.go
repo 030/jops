@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"log"
 
 	"github.com/030/jops/pkg/jira/v2/comment"
+	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )
 
@@ -24,14 +24,14 @@ var commentCmd = &cobra.Command{
 				log.Fatal("message subcommand is mandatory")
 			}
 
-			j := comment.Jira{User: user, Pass: pass, FQDN: fqdn, Project: project, TicketNumber: ticketNumber}
+			j := comment.Jira{User: user, Pass: pass, FQDN: fqdn, TicketNumber: ticketNumber}
 			if err := j.Add(msg); err != nil {
 				log.Fatal(err)
 			}
 		}
 
 		if all {
-			j := comment.Jira{User: user, Pass: pass, FQDN: fqdn, Project: project, TicketNumber: ticketNumber}
+			j := comment.Jira{User: user, Pass: pass, FQDN: fqdn, TicketNumber: ticketNumber}
 			if err := j.GetAll(); err != nil {
 				log.Fatal(err)
 			}

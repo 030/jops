@@ -52,6 +52,12 @@ func main() {
 ./jops create -d hello -s world -p "Prio 4" -l dev,devops,dev-something
 ```
 
+## Changelog
+
+```bash
+./jops changelog --ticketNumber=some-ticket
+```
+
 ## Comment
 
 ### Get all Ticket comments
