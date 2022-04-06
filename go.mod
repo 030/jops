@@ -1,6 +1,6 @@
 module github.com/030/jops
 
-go 1.17
+go 1.18
 
 require (
 	github.com/levigross/grequests v0.0.0-20190908174114-253788527a1a

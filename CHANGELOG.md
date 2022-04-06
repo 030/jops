@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.8.1] - 2022-04-06
+
+### Changed
+
+- Go version to 1.18.
+
 ## [0.8.0] - 2021-11-10
 
 ### Added
@@ -76,7 +82,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Issue JQL queries.
 - Describe in README how to use the jops library.
 
-[Unreleased]: https://github.com/030/jops/compare/0.8.0...HEAD
+[Unreleased]: https://github.com/030/jops/compare/v0.8.1...HEAD
+[v0.8.1]: https://github.com/030/jops/compare/0.8.0...v0.8.1
 [0.8.0]: https://github.com/030/jops/compare/0.7.1...0.8.0
 [0.7.1]: https://github.com/030/jops/compare/0.7.0...0.7.1
 [0.7.0]: https://github.com/030/jops/compare/0.6.1...0.7.0
